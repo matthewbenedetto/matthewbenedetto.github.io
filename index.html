@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew Benedetto — Video Production & Creative Content</title>
+<meta name="description" content="Matthew Benedetto, Director of Video Production for the Harrisburg Senators. Sports video, in-game entertainment, design and photography.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1424;
+    --bg-2: #111d33;
+    --line: #22314f;
+    --text: #eef2f8;
+    --muted: #9aa8c0;
+    --accent: #e63946;
+    --radius: 14px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 400 17px/1.65 Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 {
+    font-family: Archivo, sans-serif;
+    font-stretch: 75%;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .eyebrow {
+    font: 600 13px/1 Inter, sans-serif;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+
+  /* Nav */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 20, 36, .85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: Archivo, sans-serif; font-stretch: 75%; font-weight: 800; font-size: 22px; text-decoration: none; text-transform: uppercase; }
+  .logo span { color: var(--accent); }
+  nav { display: flex; gap: 28px; }
+  nav a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; transition: color .15s; }
+  nav a:hover { color: var(--text); }
+
+  /* Hero */
+  .hero { padding: 88px 0 96px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: 64px; align-items: center; }
+  .hero h1 { font-size: clamp(52px, 8vw, 104px); }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p.lead { color: var(--muted); font-size: 19px; max-width: 34ch; margin: 24px 0 36px; }
+  .hero-photo { position: relative; }
+  .hero-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); }
+  .hero-photo::after {
+    content: ""; position: absolute; inset: 18px -18px -18px 18px;
+    border: 2px solid var(--accent); border-radius: var(--radius); z-index: -1;
+  }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 24px; border-radius: 999px;
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    border: 1px solid var(--line); transition: transform .15s, background .15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.ghost:hover { background: var(--bg-2); }
+
+  /* Sections */
+  section { padding: 96px 0; border-top: 1px solid var(--line); }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 40px; flex-wrap: wrap; }
+  .section-head h2 { font-size: clamp(40px, 5.5vw, 64px); }
+  .section-head p { color: var(--muted); max-width: 46ch; margin: 0; }
+
+  /* Video grid */
+  .videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .video { margin: 0; }
+  .player {
+    position: relative; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden;
+    background: #000 center/cover no-repeat; cursor: pointer; border: 0; padding: 0; width: 100%;
+  }
+  .player::before { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(0,0,0,.55)); transition: opacity .2s; }
+  .player:hover::before { opacity: .4; }
+  .player .play {
+    position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+    width: 68px; height: 68px; border-radius: 50%; background: var(--accent);
+    display: grid; place-items: center; transition: scale .2s;
+  }
+  .player:hover .play { scale: 1.08; }
+  .player .play::after { content: ""; border-left: 20px solid #fff; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px; }
+  .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video figcaption { margin-top: 14px; }
+  .video h3 { font-size: 26px; }
+  .video figcaption p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+
+  /* Design + photo grid */
+  .gallery { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+  .gallery button { padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 10px; overflow: hidden; grid-column: span 3; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1; transition: transform .35s; }
+  .gallery button:hover img { transform: scale(1.04); }
+  .gallery .full { grid-column: span 12; }
+  .gallery .full img { aspect-ratio: auto; }
+  .gallery .third { grid-column: span 4; }
+  .gallery .third img { aspect-ratio: 4/3; }
+
+  dialog { border: 0; padding: 0; background: transparent; max-width: min(92vw, 1200px); }
+  dialog::backdrop { background: rgba(5, 10, 20, .9); }
+  dialog img { max-height: 88vh; width: auto; border-radius: 10px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: start; }
+  .about-grid > img { border-radius: var(--radius); aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+  .about-grid h2 { font-size: clamp(40px, 5.5vw, 64px); margin-bottom: 24px; }
+  .about-grid p { color: #c9d3e3; margin: 0 0 18px; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .facts h3 { font-size: 15px; font-family: Inter, sans-serif; font-weight: 600; letter-spacing: .12em; color: var(--accent); margin-bottom: 12px; }
+  .facts ul { list-style: none; margin: 0; padding: 0; }
+  .facts li { margin-bottom: 12px; line-height: 1.4; }
+  .facts li small { display: block; color: var(--muted); font-size: 14px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; color: #c9d3e3; }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .contact h2 { font-size: clamp(48px, 8vw, 96px); }
+  .contact p { color: var(--muted); margin: 20px auto 36px; max-width: 44ch; }
+  .contact .btns { justify-content: center; }
+  footer { padding: 32px 0; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); text-align: center; }
+
+  @media (max-width: 860px) {
+    nav { gap: 18px; }
+    .hero { padding: 48px 0 64px; }
+    .hero .wrap, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo { max-width: 420px; }
+    .hero-photo::after { inset: 12px -12px -12px 12px; }
+    .videos { grid-template-columns: 1fr; }
+    .gallery button { grid-column: span 6; }
+    .gallery .third { grid-column: span 12; }
+    .gallery .third img { aspect-ratio: 16/10; }
+    section { padding: 72px 0; }
+    .about-grid > img { aspect-ratio: 16/10; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 16px; }
+    nav a:not(:last-child) { display: none; }
+    .hero-photo { margin-right: 12px; }
+    .facts { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="logo">Matthew Benedetto<span>.</span></a>
+    <nav>
+      <a href="#work">Video</a>
+      <a href="#design">Design & Photo</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Director of Video Production · Harrisburg Senators</p>
+        <h1>Bringing the energy of <em>game day</em> to the screen.</h1>
+        <p class="lead">I produce video board content, promos, player features and live streams for professional baseball, built to get fans out of their seats.</p>
+        <div class="btns">
+          <a class="btn primary" href="#work">Watch my work</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/headshot.jpg" alt="Matthew Benedetto at the ballpark">
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Video</p>
+          <h2>Selected work</h2>
+        </div>
+        <p>Projects I filmed, edited and produced to capture fan energy, player personality and brand storytelling.</p>
+      </div>
+      <div class="videos">
+        <figure class="video">
+          <button class="player" data-id="ODdHesVz248" aria-label="Play: TV Spot Reel"><span class="play"></span></button>
+          <figcaption><h3>TV Spot Reel</h3><p>York Revolution · Broadcast commercials</p></figcaption>
+        </figure>
+        <figure class="video">
+          <button class="player" data-id="sKsZ9AZZvJQ" aria-label="Play: Theme Night Promos"><span class="play"></span></button>
+          <figcaption><h3>Theme Night Promos</h3><p>York Revolution · Cheesy, funny & epic promo spots</p></figcaption>
+        </figure>
+        <figure class="video">
+          <button class="player" data-id="dYZ8Qd_hX_k" aria-label="Play: Meet the 2025 Team"><span class="play"></span></button>
+          <figcaption><h3>Meet the 2025 Team</h3><p>York Revolution · Player personality videos</p></figcaption>
+        </figure>
+        <figure class="video">
+          <button class="player" data-id="USfgqWqSGIg" aria-label="Play: On Deck Series"><span class="play"></span></button>
+          <figcaption><h3>On Deck Series</h3><p>York Revolution · Promo series, produced & edited</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="design">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Design & Photo</p>
+          <h2>Graphics & moments</h2>
+        </div>
+        <p>Visuals I designed and moments I captured for fan engagement, promotions and partner campaigns, across digital and print.</p>
+      </div>
+      <div class="gallery">
+        <button class="full"><img src="images/design-4.jpg" alt="Player graphic: #16 Cam Robinson" loading="lazy"></button>
+        <button class="third"><img src="images/design-1.jpg" alt="Player graphic: #14 Nick Heath" loading="lazy"></button>
+        <button class="third"><img src="images/design-2.jpg" alt="Theme night graphic" loading="lazy"></button>
+        <button class="third"><img src="images/design-3.jpg" alt="Player graphic" loading="lazy"></button>
+        <button><img src="images/photo-1.jpg" alt="Young fan at the ballpark" loading="lazy"></button>
+        <button><img src="images/photo-2.jpg" alt="Fans at the game" loading="lazy"></button>
+        <button><img src="images/photo-3.jpg" alt="Young fan celebrating at the ballpark" loading="lazy"></button>
+        <button><img src="images/photo-4.jpg" alt="Fan at the ballpark" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <img src="images/fireworks.jpg" alt="Fireworks over the ballpark" loading="lazy">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Fan-first storytelling</h2>
+        <p>I'm a creative storyteller and content producer with experience in professional baseball, television and digital media. I specialize in video production, social media strategy and in-game entertainment.</p>
+        <p>At the Harrisburg Senators, I run the creative process end to end, from video board production and promotional campaigns to digital content and the team's MiLB stream. I work closely with marketing, game operations and sponsorship so every piece hits fan engagement goals and partner expectations.</p>
+        <div class="facts">
+          <div>
+            <h3>Experience</h3>
+            <ul>
+              <li>Director of Video Production<small>Harrisburg Senators</small></li>
+              <li>Video Director<small>York Revolution</small></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Education</h3>
+            <ul>
+              <li>Graduate Certificate, Sports Communication<small>Northwestern University</small></li>
+              <li>B.A. Communications<small>Penn State Harrisburg</small></li>
+            </ul>
+          </div>
+        </div>
+        <div class="facts" style="grid-template-columns:1fr">
+          <div>
+            <h3>Tools & skills</h3>
+            <div class="tags">
+              <span>Adobe Premiere Pro</span><span>After Effects</span><span>Photoshop</span>
+              <span>Live production</span><span>Video board</span><span>Streaming</span>
+              <span>Social media strategy</span><span>Photography</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's make something loud.</h2>
+      <p>Open to new roles, collaborations and freelance video projects.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:matt.benedetto98@yahoo.com">matt.benedetto98@yahoo.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="yr">2026</span> Matthew Benedetto</footer>
+
+<dialog id="lightbox"><img alt=""></dialog>
+
+<script>
+  // Lightweight YouTube players: show thumbnail first, load the video only on click.
+  document.querySelectorAll('.player').forEach(btn => {
+    const id = btn.dataset.id;
+    btn.style.backgroundImage = `url(https://i.ytimg.com/vi/${id}/hqdefault.jpg)`;
+    btn.addEventListener('click', () => {
+      btn.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="${btn.getAttribute('aria-label')}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    }, { once: true });
+  });
+
+  // Gallery lightbox
+  const box = document.getElementById('lightbox');
+  document.querySelectorAll('.gallery button').forEach(b => b.addEventListener('click', () => {
+    const img = b.querySelector('img');
+    box.querySelector('img').src = img.src;
+    box.querySelector('img').alt = img.alt;
+    box.showModal();
+  }));
+  box.addEventListener('click', () => box.close());
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
