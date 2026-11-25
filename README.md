@@ -1,6 +1,6 @@
 # Matthew Benedetto: Portfolio
 
-Personal portfolio site, hosted on GitHub Pages at https://benny1526.github.io
+Personal portfolio site, hosted on GitHub Pages at https://matthewbenedetto.github.io
 
 - `index.html`: the whole site (text, layout, styles)
 - `images/`: photos and graphics
